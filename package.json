@@ -6,6 +6,7 @@
   "scripts": {
     "start": "babel-node lib/server/index.js",
     "build-client": "webpack --config webpack.config.js",
+    "build-styles": "node-sass lib/style/index.scss assets/styles/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,6 +16,7 @@
     "babel-preset-latest": "^6.24.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "node-sass": "^4.5.0",
     "pug": "^2.0.0-beta11",
     "webpack": "^2.2.1"
   },
