@@ -16,17 +16,22 @@
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.24.0",
+    "babel-loader": "^6.4.1",
     "babel-preset-latest": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
     "pug": "^2.0.0-beta11",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "webpack": "^2.2.1"
   },
   "babel": {
     "presets": [
-      "latest"
+      "latest",
+      "react"
     ]
   }
 }

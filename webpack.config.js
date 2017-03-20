@@ -5,5 +5,10 @@ module.exports = {
   output: {
     filename: 'postie-client.js',
     path: path.resolve(__dirname, 'assets/scripts')
+  },
+  module: {
+    loaders: [
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+    ]
   }
 };
