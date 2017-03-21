@@ -7,36 +7,37 @@
   "main": "index.js",
 
   "scripts": {
-    "build-client": "webpack --config webpack.config.js",
-    "build-styles": "node-sass lib/style/index.scss assets/styles/main.css",
-    "client-coverage": "NODE_ENV=test nyc npm run test-client",
-    "start": "babel-node lib/server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test-client": "mocha --require babel-register --require test/client/support --recursive test/client/*-spec.js",
-    "watch-client-build": "nodemon --watch lib/client --ext js --exec \"npm run build-client\"",
-    "watch-client-test": "nodemon --watch test/client --watch lib/client --ext js --exec \"npm run test-client\"",
-    "watch-server-build": "nodemon --watch lib/server --ext js --exec \"npm start\"",
-    "watch-styles-build": "nodemon --watch lib/style --ext scss --exec \"npm run build-styles\""
+    "test": "npm run client-coverage && npm run server-coverage",
+    "start": "npm run client && npm run server",
+
+    "client": "npm run client-coverage && npm run client-build",
+    "client-build": "webpack --config webpack.config.js",
+    "client-test": "mocha --require babel-register --require test/client/support --recursive test/client/*-spec.js",
+    "client-coverage": "NODE_ENV=test nyc npm run client-test",
+    "client-watch": "nodemon --watch test/client --watch lib/client --ext js --exec \"npm run client-test && npm run client-build\"",
+
+    "server": "npm run server-coverage && npm run server-start",
+    "server-start": "babel-node lib/server/index.js",
+    "server-test": "mocha --require babel-register --require test/server/support --recursive test/server/*-spec.js",
+    "server-coverage": "NODE_ENV=test nyc npm run server-test",
+    "server-watch": "nodemon --watch test/server --watch lib/server --ext js --exec \"npm run server-test && npm run server-start\"",
+
+    "styles-build": "node-sass lib/style/index.scss assets/styles/main.css",
+    "styles-watch": "nodemon --watch lib/style --ext scss --exec \"npm run styles-build\""
   },
 
   "babel": {
-    "presets": [
-      "latest",
-      "react"
-    ],
+    "presets": [ "latest", "react" ],
     "env": {
       "test": {
-        "plugins": [
-          "istanbul"
-        ]
+        "plugins": [ "istanbul" ]
       }
     }
   },
 
   "nyc": {
-    "require": [
-      "babel-register"
-    ],
+    "require": [ "babel-register" ],
+    "exclude": [ "webpack.config.js", "test/**" ],
     "sourceMap": false,
     "instrument": false
   },
@@ -59,6 +60,7 @@
   "devDependencies": {
     "babel-plugin-istanbul": "^4.0.0",
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "enzyme": "^2.7.1",
     "mocha": "^3.2.0",
     "nyc": "^10.1.2",
