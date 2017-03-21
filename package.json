@@ -2,18 +2,45 @@
   "name": "postie",
   "version": "0.0.0",
   "description": "A postman type application for websockets",
-  "main": "index.js",
-  "scripts": {
-    "start": "babel-node lib/server/index.js",
-    "build-client": "webpack --config webpack.config.js",
-    "build-styles": "node-sass lib/style/index.scss assets/styles/main.css",
-    "watch-client": "nodemon -w lib/client -e js -x \"npm run build-client\"",
-    "watch-server": "nodemon -w lib/server -e js -x \"npm start\"",
-    "watch-styles": "nodemon -w lib/style -e scss -x \"npm run build-styles\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
+  "main": "index.js",
+
+  "scripts": {
+    "build-client": "webpack --config webpack.config.js",
+    "build-styles": "node-sass lib/style/index.scss assets/styles/main.css",
+    "client-coverage": "NODE_ENV=test nyc npm run test-client",
+    "start": "babel-node lib/server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-client": "mocha --require babel-register --require test/client/support --recursive test/client/*-spec.js",
+    "watch-client-build": "nodemon --watch lib/client --ext js --exec \"npm run build-client\"",
+    "watch-client-test": "nodemon --watch test/client --watch lib/client --ext js --exec \"npm run test-client\"",
+    "watch-server-build": "nodemon --watch lib/server --ext js --exec \"npm start\"",
+    "watch-styles-build": "nodemon --watch lib/style --ext scss --exec \"npm run build-styles\""
+  },
+
+  "babel": {
+    "presets": [
+      "latest",
+      "react"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+
   "dependencies": {
     "babel-cli": "^6.24.0",
     "babel-loader": "^6.4.1",
@@ -28,10 +55,13 @@
     "react-dom": "^15.4.2",
     "webpack": "^2.2.1"
   },
-  "babel": {
-    "presets": [
-      "latest",
-      "react"
-    ]
+
+  "devDependencies": {
+    "babel-plugin-istanbul": "^4.0.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.7.1",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
+    "react-addons-test-utils": "^15.4.2"
   }
 }
