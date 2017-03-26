@@ -1,15 +1,27 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import MyComponent from '../../lib/client/my-component';
+import proxyquire from 'proxyquire';
+import CommunicationView from '../../lib/client/communication-view';
 
-describe('MyComponent', function() {
-  let wrapper;
+describe('# Postie Client', function() {
+  let client,
+      container,
+      dependencies = {},
+      ReactDomRender;
 
-  before(function() {
-    wrapper = shallow(<MyComponent aProp="Awesomeness" />);
+  before(() => {
+    ReactDomRender = sinon.stub();
+    dependencies['react-dom'] = { render: ReactDomRender }; 
+
+    container = document.createElement('main');
+    document.body.appendChild(container);
+
+    client = proxyquire('../../lib/client', dependencies);
   });
 
-  it('has aProp', function() {
-    expect(wrapper.props().aProp).to.be.defined;
+  it('uses the CommunicationView component as the initial component', function() {
+    expect(ReactDomRender.args[0][0]).to.deep.equal(<CommunicationView />);
+  });
+
+  it('uses the first <main /> element as the container for the React app', () => {
+    expect(ReactDomRender.args[0][1]).to.equal(container); 
   });
 });
