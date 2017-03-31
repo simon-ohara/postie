@@ -18,7 +18,7 @@
     "server-test": "mocha --require babel-register --require test/server/support --recursive test/server/*-spec.js",
     "server-coverage": "NODE_ENV=test nyc npm run server-test",
     "server-watch": "nodemon --watch test/server --watch lib/server --ext js --exec \"npm run server-test && npm run server-start\"",
-    "styles-build": "node-sass lib/style/index.scss assets/styles/main.css",
+    "styles-build": "node-sass lib/style/index.sass assets/styles/main.css --include-path ../neutroncss --include-path node_modules/normalize.css --include-path node_modules",
     "styles-watch": "nodemon --watch lib/style --ext scss --exec \"npm run styles-build\""
   },
   "babel": {
@@ -51,6 +51,7 @@
     "babel-preset-latest": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "body-parser": "^1.17.1",
+    "bulma": "^0.4.0",
     "express": "^4.15.2",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",

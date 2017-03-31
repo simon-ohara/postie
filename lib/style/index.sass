@@ -1,0 +1,48 @@
+@import bulma/sass/utilities/all
+@import bulma/sass/base/minireset
+@import bulma/sass/base/generic
+@import bulma/sass/elements/form
+@import bulma/sass/elements/button
+@import neutron
+@import colors
+
+=x($name)
+  @extend $name
+
+body
+  background-color: whitesmoke
+  color: $red
+  max-width: initial
+
+input
+  +x(.input)
+
+button
+  +x(.button)
+
+form
+  > button
+    +x(.button.is-primary)
+
+main
+  +columns(1, $container-width: 70%)
+
+#endpoint
+  +x(.input.is-medium)
+
+#argument-list
+  margin: 20px 0
+
+  .argument-item
+    +columns((4,9,0.5), $container-width: 100%, $margin: 3px)
+
+    input
+      +x(.input.is-small)
+
+  .argument-remove
+    +x(.button.is-light)
+    +x(.button.is-small)
+    color: dimgrey
+
+  > button
+    +x(.button.is-small)
