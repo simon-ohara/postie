@@ -1,18 +1,14 @@
+# Postie
+
 A postman type app for use with websockets
 
-Connection View
-  address
-  port
+## Installation
 
-Comms View
-  composer panel
-    endpoint input
-    args list
-      item
-        name input
-        value input
-      add button
-    send button
+```bash
+git clone https://github.com/simon-ohara/postie.git
+cd postie
+npm install
+npm start
+```
 
-  feedback panel
-    message
+Visit [localhost:3000](http://localhost:3000)
