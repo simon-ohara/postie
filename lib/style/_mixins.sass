@@ -1,0 +1,7 @@
+=x($name)
+  $index: str-index($name, '.')
+  @if $index == 1
+    @extend .#{str-slice($name, 2)}
+  @else
+    @extend #{$name}
+

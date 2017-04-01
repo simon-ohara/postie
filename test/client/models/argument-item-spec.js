@@ -1,6 +1,6 @@
 import ArgumentItem from '../../../lib/client/models/argument-item';
 
-describe('ArgumentItem', function() {
+describe('ArgumentItem model', function() {
   describe('[id] property', function() {
     let model;
 

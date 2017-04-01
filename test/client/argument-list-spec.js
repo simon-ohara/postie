@@ -2,7 +2,7 @@ import ArgumentList from '../../lib/client/argument-list';
 import ArgumentItemComponent from '../../lib/client/argument-item';
 import ArgumentItem from '../../lib/client/models/argument-item';
 
-describe('ArgumentList component', function() {
+describe('<ArgumentList/> component', function() {
   let list;
 
   before(() => {
@@ -222,11 +222,9 @@ describe('ArgumentList component', function() {
 
     it('updates state for the value of the item and field that has changed', () => {
       list = shallow(<ArgumentList items={ items }/>);
-      console.log('before', list.state('items'));
       parent.id = list.state('items')[0].id;
       expect(list.state('items')[0].name).to.equal('Barry');
       list.instance().handleChange(event);
-      console.log('after', list.state('items'));
       expect(list.state('items')[0].name).to.equal('Larry');
     });
   });

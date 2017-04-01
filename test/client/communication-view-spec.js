@@ -2,7 +2,7 @@ import CommunicationView from '../../lib/client/communication-view';
 import MessageComposer from '../../lib/client/message-composer';
 import MessageViewer from '../../lib/client/message-viewer';
 
-describe('CommunicationView', function() {
+describe('<CommunicationView/> component', function() {
   let view;
 
   before(() => {

@@ -1,34 +1,50 @@
-@import bulma/sass/utilities/all
-@import bulma/sass/base/minireset
-@import bulma/sass/base/generic
-@import bulma/sass/elements/form
-@import bulma/sass/elements/button
+@import bulma-custom
 @import neutron
-@import colors
-
-=x($name)
-  @extend $name
+@import mixins
 
 body
   background-color: whitesmoke
-  color: $red
   max-width: initial
 
 input
-  +x(.input)
+  +x('.input')
 
 button
-  +x(.button)
+  +x('.button')
 
-form
-  > button
-    +x(.button.is-primary)
+header
+  background-color: dimgrey
+  color: white
+
+  h1
+    padding: 8px 0
+    font-size: 1.5em
+    text-align: center
 
 main
-  +columns(1, $container-width: 70%)
+  > section > div
+    padding: 30px 0
 
-#endpoint
-  +x(.input.is-medium)
+  h1,
+  form
+    +columns(1, $container-width: 70%)
+
+#message-address
+  +x('.field.has-addons')
+
+  input
+    +x('.input.is-medium')
+    margin-right: -1px
+    border:
+      bottom-right-radius: 0
+      top-right-radius: 0
+
+  button
+    +x('.button.is-primary')
+    +x('.is-medium')
+    border:
+      bottom-left-radius: 0
+      top-left-radius: 0
 
 #argument-list
   margin: 20px 0
@@ -37,12 +53,12 @@ main
     +columns((4,9,0.5), $container-width: 100%, $margin: 3px)
 
     input
-      +x(.input.is-small)
+      +x('.input.is-small')
 
   .argument-remove
-    +x(.button.is-light)
-    +x(.button.is-small)
+    +x('.button.is-light')
+    +x('.button.is-small')
     color: dimgrey
 
   > button
-    +x(.button.is-small)
+    +x('.button.is-small')

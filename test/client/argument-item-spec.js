@@ -1,6 +1,6 @@
 import ArgumentItem from '../../lib/client/argument-item';
 
-describe('ArgumentItem component', function() {
+describe('<ArgumentItem/> component', function() {
   var item, children, id;
 
   before(() => {

@@ -18,8 +18,8 @@
     "server-test": "mocha --require babel-register --require test/server/support --recursive test/server/*-spec.js",
     "server-coverage": "NODE_ENV=test nyc npm run server-test",
     "server-watch": "nodemon --watch test/server --watch lib/server --ext js --exec \"npm run server-test && npm run server-start\"",
-    "styles-build": "node-sass lib/style/index.sass assets/styles/main.css --include-path ../neutroncss --include-path node_modules/normalize.css --include-path node_modules",
-    "styles-watch": "nodemon --watch lib/style --ext scss --exec \"npm run styles-build\""
+    "styles-build": "node-sass lib/style/index.sass assets/styles/main.css --include-path ../neutroncss --include-path node_modules/bulma",
+    "styles-watch": "nodemon --watch lib/style --ext sass,scss --exec \"npm run styles-build\""
   },
   "babel": {
     "presets": [
