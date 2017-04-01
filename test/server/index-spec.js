@@ -41,7 +41,7 @@ describe('Postie server app', function() {
         .request(server)
         .get('/')
         .end((err, response) => {
-          expect(response.text).to.include('DAMN FINE!!');
+          expect(response.text).to.include('Postie');
           done();
         });
     });
