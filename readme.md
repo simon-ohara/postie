@@ -12,3 +12,14 @@ npm start
 ```
 
 Visit [localhost:3000](http://localhost:3000)
+
+---
+
+## Notes
+
+1. Enter WebSocket Address & Port
+# Click Connect
+# Show Message Receiver and Connection Status
+# Once connection established show Message Composer
+# Enter endpoint address
+# Add params or arguments if an RPC
